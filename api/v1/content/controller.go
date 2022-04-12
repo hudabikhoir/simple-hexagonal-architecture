@@ -1,7 +1,9 @@
 package content
 
 import (
+	"clean-hexa/api/v1/content/request"
 	contentBusiness "clean-hexa/business/content"
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -29,4 +31,21 @@ func (controller *Controller) GetAll(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, contents)
+}
+
+func (controller *Controller) Create(c echo.Context) error {
+	createContentRequest := new(request.CreateContentRequest)
+	if err := c.Bind(createContentRequest); err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+	fmt.Println("createContentRequest v1: ", createContentRequest)
+
+	req := *createContentRequest.ToSpec()
+
+	err := controller.service.CreateContent(req)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+	// controller.service.CreateContent
+	return c.JSON(http.StatusOK, "")
 }

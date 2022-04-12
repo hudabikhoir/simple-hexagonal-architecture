@@ -1,5 +1,12 @@
 package content
 
+import (
+	"clean-hexa/business/content/spec"
+	"fmt"
+
+	validator "github.com/go-playground/validator/v10"
+)
+
 // ingoing port
 type Repository interface {
 	FindContentByID(id int) (content *Content, err error)
@@ -12,17 +19,19 @@ type Repository interface {
 type Service interface {
 	GetContentByID(id int) (content *Content, err error)
 	GetContents() (contents []Content, err error)
-	CreateContent(content Content) (err error)
+	CreateContent(spec spec.UpsertContentSpec) (err error)
 	UpdateContent(content Content, currentVersion int) (err error)
 }
 
 type service struct {
 	repository Repository
+	validate   *validator.Validate
 }
 
 func NewService(repository Repository) Service {
 	return &service{
 		repository: repository,
+		validate:   validator.New(),
 	}
 }
 
@@ -39,7 +48,10 @@ func (s *service) GetContents() (contents []Content, err error) {
 	return contents, nil
 }
 
-func (s *service) CreateContent(content Content) (err error) {
+func (s *service) CreateContent(spec spec.UpsertContentSpec) (err error) {
+	err = s.validate.Struct(spec)
+	fmt.Println("err service: ", err)
+
 	return
 }
 

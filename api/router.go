@@ -15,7 +15,9 @@ type Controller struct {
 func RegistrationPath(e *echo.Echo, controller Controller) {
 	contentV1 := e.Group("/v1/content")
 	contentV1.GET("", controller.ContentV1Controller.GetAll)
+	contentV1.POST("", controller.ContentV1Controller.Create)
 
 	contentV2 := e.Group("/v2/content")
 	contentV2.GET("", controller.ContentV2Controller.GetAll)
+	contentV2.POST("", controller.ContentV2Controller.Create)
 }
