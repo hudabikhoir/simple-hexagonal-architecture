@@ -1,0 +1,6 @@
+[app]
+port = 5008
+
+[database]
+driver = "static"
+dburl = "postgres://postgres:admin@localhost:5432/blog"
