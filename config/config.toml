@@ -1,5 +1,6 @@
 [app]
 port = 5008
+jwtkey = "my_screet_key"
 
 [database]
 driver = "static"

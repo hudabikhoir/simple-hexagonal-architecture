@@ -20,7 +20,7 @@ func main() {
 	dbCon := util.NewConnectionDatabase(config)
 	defer dbCon.CloseConnection()
 
-	controllers := modules.RegisterModules(dbCon)
+	controllers := modules.RegisterModules(dbCon, config)
 
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
