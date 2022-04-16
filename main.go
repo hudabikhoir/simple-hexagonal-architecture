@@ -29,7 +29,7 @@ func main() {
 	api.RegistrationPath(e, controllers)
 
 	go func() {
-		address := fmt.Sprintf(":%d", config.App.Port)
+		address := fmt.Sprintf("0.0.0.0:%d", config.App.Port)
 		if err := e.Start(address); err != nil {
 			log.Fatal(err)
 		}
