@@ -15,7 +15,7 @@ type AppConfig struct {
 	} `toml:"app"`
 	Database struct {
 		Driver string `toml:"driver"`
-		DBURL  string `toml:dburl`
+		DBURL  string `toml:"dburl"`
 	} `toml:"database"`
 }
 
