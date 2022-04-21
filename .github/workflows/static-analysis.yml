@@ -24,7 +24,7 @@ jobs:
         run: go test -coverprofile=./coverage.out ./...
       - name: Run Go Security Scanner
         run: |
-          go get github.com/securego/cmd/gosec
+          go get github.com/securego/gosec/cmd/gosec
           gosec -no-fail -fmt=sonarqube -out report.json ./...
       - name: Sonarcloud Scan
         uses: SonarSource/sonarcloud-github-action@master
