@@ -11,8 +11,6 @@ import (
 type Repository interface {
 	FindContentByID(id int) (content *Content, err error)
 	FindAll() (contents []Content, err error)
-	InsertContent(content Content) (err error)
-	UpdateContent(content Content, currentVersion int) (err error)
 }
 
 // outgoing port
