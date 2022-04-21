@@ -1,0 +1,19 @@
+{
+	"issues": [
+		{
+			"engineId": "gosec",
+			"ruleId": "G104",
+			"primaryLocation": {
+				"message": "Errors unhandled.",
+				"filePath": "util/driver.go",
+				"textRange": {
+					"startLine": 53,
+					"endLine": 53
+				}
+			},
+			"type": "VULNERABILITY",
+			"severity": "MINOR",
+			"effortMinutes": 5
+		}
+	]
+}
