@@ -33,6 +33,14 @@ func (controller *Controller) GetAll(c echo.Context) error {
 	return c.JSON(http.StatusOK, contents)
 }
 
+// Create godoc
+// @Summary Create content
+// @description create content with data
+// @tags content
+// @Accept json
+// @Produce json
+// @Success 200 {object} content.Content
+// @Router /v1/content [post]
 func (controller *Controller) Create(c echo.Context) error {
 	createContentRequest := new(request.CreateContentRequest)
 	if err := c.Bind(createContentRequest); err != nil {

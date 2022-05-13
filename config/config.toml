@@ -4,4 +4,4 @@ jwtkey = "my_screet_key"
 
 [database]
 driver = "postgres"
-dburl = "postgres://postgres:admin@clean_hexa_db:5432/blog"
+dburl = "postgres://postgres:admin@localhost:5432/blog"

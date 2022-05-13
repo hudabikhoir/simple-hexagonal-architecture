@@ -11,8 +11,12 @@ import (
 	"os"
 
 	"github.com/labstack/echo/v4"
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
+// @title Clean Hexa Sample API
+// @version 1.0
+// @description Berikut API yang digunakan untuk mini project
 func main() {
 	config := config.GetConfig()
 
@@ -22,6 +26,8 @@ func main() {
 	controllers := modules.RegisterModules(dbCon, config)
 
 	e := echo.New()
+	handleSwag := echoSwagger.WrapHandler
+	e.GET("/swagger/*", handleSwag)
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "hello world")
 	})

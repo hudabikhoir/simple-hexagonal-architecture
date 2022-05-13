@@ -1,7 +1,6 @@
 package api
 
 import (
-	"clean-hexa/api/middleware"
 	contentV1 "clean-hexa/api/v1/content"
 	contentV2 "clean-hexa/api/v2/content"
 
@@ -19,7 +18,7 @@ type Controller struct {
 
 func RegistrationPath(e *echo.Echo, controller Controller) {
 	contentV1 := e.Group("/v1/content")
-	contentV1.Use(middleware.JWTMiddleware())
+	// contentV1.Use(middleware.JWTMiddleware())
 	contentV1.GET("", controller.ContentV1Controller.GetAll)
 	contentV1.POST("", controller.ContentV1Controller.Create)
 
